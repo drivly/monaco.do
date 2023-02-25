@@ -6,7 +6,7 @@ export default {
 
     // if pathname.startsWith('/_')
 
-    const target = pathname == '/' ? undefined : url.includes('/_/') ? url.replace('/_','').replace(':/', ':/proxy.as/') : 'https:/' + pathname
+    const target = pathname == '/' ? undefined : url.includes('/_/') ? url.replace('/_','').replace('://', '://proxy.as/') : 'https:/' + pathname
     const res = target ? await fetch(target) : undefined
     const body = res ? await res.text() : undefined
     const contentType = res?.headers?.get('content-type')
