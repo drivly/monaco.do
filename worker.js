@@ -1,28 +1,4 @@
-export const api = {
-  icon: '🚀',
-  name: 'templates.do',
-  description: 'Cloudflare Worker Template',
-  url: 'https://templates.do/api',
-  type: 'https://apis.do/templates',
-  endpoints: {
-    listCategories: 'https://templates.do/api',
-    getCategory: 'https://templates.do/:type',
-  },
-  site: 'https://templates.do',
-  login: 'https://templates.do/login',
-  signup: 'https://templates.do/signup',
-  subscribe: 'https://templates.do/subscribe',
-  repo: 'https://github.com/drivly/templates.do',
-}
 
-export const gettingStarted = [
-  `If you don't already have a JSON Viewer Browser Extension, get that first:`,
-  `https://extensions.do`,
-]
-
-export const examples = {
-  listItems: 'https://templates.do/worker',
-}
 
 export default {
   fetch: async (req, env) => {
@@ -33,19 +9,31 @@ export default {
     const [ resource, id ] = pathSegments
     const data = { resource, id, hello: user.city }
     
-    return json({ api, data, user })
+    return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8' }})
   }
 }
 
-const json = (obj, init) => {
-  if (!init) {
-    init = {}
-  }
-  if (!init.headers) {
-    init.headers = {}
-  }
-  if (!init.headers['Content-Type'] && !init.headers['content-type']) {
-    init.headers['Content-Type'] = 'application/json; charset=utf-8'
-  }
-  return new Response(JSON.stringify(obj, null, 2), init)
-}
+const html = `<!DOCTYPE html>
+<html>
+	<head>
+		<title>browser-amd-editor</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	</head>
+	<body>
+		<h2>Monaco Editor Sample</h2>
+		<div id="container" style="width: 800px; height: 600px; border: 1px solid grey"></div>
+
+		<!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
+		<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+		<script>
+			require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+
+			require(['vs/editor/editor.main'], function () {
+				var editor = monaco.editor.create(document.getElementById('container'), {
+					value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+					language: 'javascript'
+				});
+			});
+		</script>
+	</body>
+</html>`
