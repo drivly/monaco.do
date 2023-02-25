@@ -26,9 +26,9 @@ const html = `<!DOCTYPE html>
     <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.js"></script>
     <script>
-      require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+      // require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 
-      require(['vs/editor/editor.main'], function () {
+      require(['https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.js'], function () {
         var editor = monaco.editor.create(document.getElementById('container'), {
           value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
           language: 'javascript',
