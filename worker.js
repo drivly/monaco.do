@@ -76,8 +76,8 @@ export default {
       </div>
     </nav>
     <main>
-      <div class="">
-        <div id="container" class="h-100"></div>
+      <div class="h-full">
+        <div id="container" class="h-full"></div>
       </div>
     </main>
   </div>
