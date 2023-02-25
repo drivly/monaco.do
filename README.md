@@ -1,4 +1,4 @@
-# Templates.do - Worker Templates API 
+# Monaco.do - Monaco Code & Data Viewer
 
 Explore the API at: <https://templates.do/api>
 
