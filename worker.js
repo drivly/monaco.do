@@ -13,28 +13,28 @@ export default {
 }
 
 const html = `<!DOCTYPE html>
-<html>
-  <head>
-    <title>browser-amd-editor</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <h2>Monaco Editor Sample</h2>
-    <div id="container" style="width: 100%; height: 100%; border: 0px"></div>
-
-    <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.js"></script>
-    <script>
-      // require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
-
-      require(['https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.js'], function () {
-        var editor = monaco.editor.create(document.getElementById('container'), {
-          value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-          language: 'javascript',
-					theme: 'vs-dark',
-        });
-      });
-    </script>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monaco editor</title>
+<link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.min.css">
+</head>
+<body>
+<div id="container" style="height:400px;border:1px solid black;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/loader.min.js"></script>
+<script>
+// require is provided by loader.min.js.
+require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs' }});
+require(["vs/editor/editor.main"], () => {
+  monaco.editor.create(document.getElementById('container'), {
+    value: `function x() {
+  console.log("Hello world!");
+}`,
+    language: 'javascript',
+    theme: 'vs-dark',
+  });
+});
+</script>
+</body>
 </html>`
