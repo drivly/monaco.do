@@ -11,7 +11,7 @@ export default {
     const res = pathname == '/' ? undefined : await fetch('https:/' + pathname)
     const body = res ? await res.text() : undefined
     const contentType = res?.headers?.get('content-type')
-    const type = contentType.includes('html') ? 'html' : contentType.includes('json') ? 'json' : contentType.includes('javascript') ? 'javascript' : 'text'
+    const type = contentType?.includes('html') ? 'html' : contentType?.includes('json') ? 'json' : contentType?.includes('javascript') ? 'javascript' : 'text'
     const html = `<!DOCTYPE html>
 <!doctype html>
 <html lang="en">
