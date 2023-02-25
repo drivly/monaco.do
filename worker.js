@@ -31,7 +31,11 @@ require(["vs/editor/editor.main"], () => {
     value: \`${body}\`,
     language: '${type}',
     theme: 'vs-dark',
-    scrollBeyondLastLine: false
+    scrollBeyondLastLine: false,
+    padding: {
+      top: 10,
+      bottom: 10
+    },
   });
 });
 </script>
