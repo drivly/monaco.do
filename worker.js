@@ -2,13 +2,12 @@
 
 export default {
   fetch: async (req, env) => {
-    const { user, hostname, pathname, rootPath, pathSegments, query } = await env.CTX.fetch(req).then(res => res.json())
-    
-    // TODO: Implement this
-    // const [ resource, id ] = pathSegments
-    // const data = { resource, id, hello: user.city }
+    const { user, url, hostname, pathname, rootPath, pathSegments, query } = await env.CTX.fetch(req).then(res => res.json())
 
-    const res = pathname == '/' ? undefined : await fetch('https:/' + pathname)
+    // if pathname.startsWith('/_')
+
+    const target = pathname == '/' ? undefined : url.includes('/_/') ? url.replace('/_/','/') : 'https:/' + pathname
+    const res = target ? await fetch(target) : undefined
     const body = res ? await res.text() : undefined
     const contentType = res?.headers?.get('content-type')
     const type = contentType?.includes('html') ? 'html' : contentType?.includes('json') ? 'json' : contentType?.includes('javascript') ? 'javascript' : 'text'
