@@ -17,13 +17,14 @@ const html = `<!DOCTYPE html>
   <head>
     <title>browser-amd-editor</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.min.css" rel="stylesheet">
   </head>
   <body>
     <h2>Monaco Editor Sample</h2>
     <div id="container" style="width: 100%; height: 100%; border: 0px"></div>
 
     <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
-    <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.js"></script>
     <script>
       require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 
