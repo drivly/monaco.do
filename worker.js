@@ -28,9 +28,9 @@ const html = `<!DOCTYPE html>
 require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs' }});
 require(["vs/editor/editor.main"], () => {
   monaco.editor.create(document.getElementById('container'), {
-    value: `function x() {
+    value: \`function x() {
   console.log("Hello world!");
-}`,
+}\`,
     language: 'javascript',
     theme: 'vs-dark',
   });
