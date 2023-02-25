@@ -21,7 +21,7 @@ export default {
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/editor/editor.main.min.css">
 </head>
 <body>
-<div id="container" style="height:100%; border:0px;"></div>
+<div id="container" style="height: 100vh; border:0px;"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.0/min/vs/loader.min.js"></script>
 <script>
 // require is provided by loader.min.js.
