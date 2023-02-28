@@ -12,7 +12,6 @@ export default {
     const contentType = res?.headers?.get('content-type')
     const type = contentType?.includes('html') ? 'html' : contentType?.includes('json') ? 'json' : contentType?.includes('javascript') ? 'javascript' : 'text'
     const html = `<!DOCTYPE html>
-<!doctype html>
 <html lang="en">
   <head>
   <meta charset="utf-8">
